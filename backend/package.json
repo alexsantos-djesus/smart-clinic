@@ -24,14 +24,14 @@
     "serverless-http": "^4.0.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.23",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^20.19.15",
     "prisma": "^5.18.0",
     "tsx": "^4.19.1",
-    "typescript": "^5.4.5",
-    "@types/node": "^20.11.30",
-    "@types/express": "^4.17.21",
-    "@types/cors": "^2.8.17",
-    "@types/morgan": "^1.9.9",
-    "@types/bcryptjs": "^2.4.2",
-    "@types/jsonwebtoken": "^9.0.6"
+    "typescript": "^5.4.5"
   }
 }
