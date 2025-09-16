@@ -1,0 +1,30 @@
+{
+  "name": "smart-clinic",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo (backend + frontend) da Smart Clinic",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c green,magenta \"npm:dev -w backend\" \"npm:dev -w frontend\"",
+    "dev:api": "npm -w backend run dev",
+    "dev:web": "npm -w frontend run dev",
+    "build": "npm -w backend run build && npm -w frontend run build",
+    "build:api": "npm -w backend run build",
+    "build:web": "npm -w frontend run build",
+    "start": "concurrently -n api,web -c green,magenta \"npm:start -w backend\" \"npm:start -w frontend\"",
+    "start:api": "npm -w backend start",
+    "start:web": "npm -w frontend start",
+    "clean": "rimraf node_modules backend/node_modules frontend/node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "rimraf": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=18.17"
+  }
+}
+  

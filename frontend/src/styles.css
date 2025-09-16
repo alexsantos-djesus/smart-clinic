@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --c-bg: #f6faf9;
+  --c-primary: #39d0cb;
+  --c-primary-600: #07b4ba;
+  --c-ink: #2a3a3a;
+}
+body {
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: ui-sans-serif, system-ui;
+}
+.card {
+  @apply bg-white rounded-2xl shadow p-6;
+}
+.btn {
+  @apply px-5 py-3 rounded-xl font-medium transition;
+  background: var(--c-primary);
+  color: #033;
+}
+.btn:hover {
+  background: var(--c-primary-600);
+}
+.input {
+  @apply w-full rounded-xl border border-[#DAE7E5] bg-[#EEF6F4] px-4 py-3 outline-none focus:ring-2 focus:ring-primary;
+}
