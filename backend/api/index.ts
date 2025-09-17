@@ -41,4 +41,5 @@ app.use("/weather", weatherRoutes);
 
 app.use((_req, res) => res.status(404).json({ error: "not_found" }));
 
-export default serverless(app);
+export default serverless(app, { basePath: "/api" });
+
