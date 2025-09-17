@@ -1,14 +1,11 @@
-import cors from "cors";
+// backend/api/index.ts
+import type { VercelRequest, VercelResponse } from "@vercel/node";
+import serverless from "serverless-http";
+import app from "../src/app";
 
-const allowed = [
-  "http://localhost:5173",
-  "https://smart-clinic-frontend.vercel.app/",
-];
+const handler = serverless(app);
 
-app.use(
-  cors({
-    origin: allowed,
-    methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+// Vercel exige um default export que trate a requisição
+export default (req: VercelRequest, res: VercelResponse) => {
+  return handler(req as any, res as any);
+};
