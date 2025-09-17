@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { verifyJwt } from "./jwt";
+import { verifyJwt } from "./jwt.js";
 export function requireAuth(req: Request, res: Response, next: NextFunction) {
   const h = req.headers.authorization || "";
   const t = h.startsWith("Bearer ") ? h.slice(7) : "";
