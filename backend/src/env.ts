@@ -1,44 +1,23 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-import dotenv from "dotenv";
+import "dotenv/config";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+type Opts = { required?: boolean };
 
-const candidates = [
-  path.resolve(__dirname, "..", ".env"),
-  path.resolve(__dirname, "..", "..", ".env"),
-  path.resolve(process.cwd(), ".env"),
-];
-
-let loadedFrom = "";
-for (const p of candidates) {
-  if (fs.existsSync(p)) {
-    const res = dotenv.config({ path: p, override: true });
-    if (!res.error) {
-      loadedFrom = p;
-      break;
-    }
-  }
-}
-
-function req(name: string) {
+function getEnv(name: string, opts: Opts = { required: false }) {
   const v = process.env[name];
-  if (!v) {
-    const hint =
-      `Faltou ${name}. Procurei .env em:\n- ${candidates.join("\n- ")}\n` +
-      `Carregado de: ${loadedFrom || "nenhum"}\n` +
-      `Dica: crie backend/.env (UTF-8) com:\n` +
-      `DATABASE_URL=...\nJWT_SECRET=...\nOPENWEATHER_KEY=...\nPORT=3001\n`;
-    throw new Error(hint);
+  if ((opts.required ?? false) && (!v || v.trim() === "")) {
+    throw new Error(`Missing required env: ${name}`);
   }
-  return v;
+  return v?.trim() ?? "";
 }
 
 export const env = {
-  PORT: Number(process.env.PORT || 3001),
-  DATABASE_URL: req("DATABASE_URL"),
-  JWT_SECRET: req("JWT_SECRET"),
-  OPENWEATHER_KEY: req("OPENWEATHER_KEY"),
+  DATABASE_URL: getEnv("DATABASE_URL"),
+  DIRECT_URL: getEnv("DIRECT_URL"),
+  JWT_SECRET: getEnv("JWT_SECRET", { required: true }),
+  OPENWEATHER_KEY: getEnv("OPENWEATHER_KEY", { required: true }),
 };
+
+export function ensureDbEnv() {
+  if (!env.DATABASE_URL)
+    throw new Error("DATABASE_URL is required to access the database");
+}
