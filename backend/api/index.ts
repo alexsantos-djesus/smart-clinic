@@ -31,7 +31,7 @@ app.use(
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.get("/health", (_req, res) => res.json({ ok: true }));
+app.get("/health", (_req, res) => res.status(200).send("ok"));
 
 app.use("/auth", authRoutes);
 app.use("/users", usersRoutes);
