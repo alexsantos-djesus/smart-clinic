@@ -1,9 +1,8 @@
 import axios from "axios";
 
 const raw = import.meta.env.VITE_API_URL?.trim();
-const baseURL = raw
-  ? raw.replace(/\/+$/, "")
-  : "https://smart-clinic-backend.vercel.app/api";
+// defina VITE_API_BASE = https://smart-clinic-backend.vercel.app/api
+const baseURL = raw ? raw.replace(/\/+$/, "") : "http://localhost:3001/api";
 
 const api = axios.create({ baseURL });
 
