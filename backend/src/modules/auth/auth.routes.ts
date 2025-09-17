@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { prisma } from "../../prisma";
-import { hash, compare } from "../../auth/hash";
-import { signJwt } from "../../auth/jwt";
+import { prisma } from "../../prisma.js";
+import { hash, compare } from "../../auth/hash.js";
+import { signJwt } from "../../auth/jwt.js";
 const r = Router();
 r.post("/register", async (req, res) => {
   const { name, email, password, role, cpf, phone } = req.body;

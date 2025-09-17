@@ -1,4 +1,4 @@
-import { prisma } from "../../prisma";
+import { prisma } from "../../prisma.js";
 export async function isSlotFree(staffId: string, date: Date) {
   const start = new Date(date);
   start.setMinutes(0, 0, 0);

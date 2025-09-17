@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { prisma } from "../../prisma";
-import { requireAuth } from "../../auth/auth.middleware";
-import { isSlotFree } from "./appointments.service";
+import { prisma } from "../../prisma.js";
+import { requireAuth } from "../../auth/auth.middleware.js";
+import { isSlotFree } from "./appointments.service.js";
 
 const r = Router();
 

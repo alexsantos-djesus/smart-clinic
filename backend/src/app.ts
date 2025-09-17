@@ -3,11 +3,11 @@ import cors from "cors";
 import morgan from "morgan";
 import { errorHandler } from "./middlewares/error";
 
-import authRoutes from "./modules/auth/auth.routes";
-import usersRoutes from "./modules/users/users.routes";
-import apptRoutes from "./modules/appointments/appointments.routes";
-import cepRoutes from "./modules/integrations/cep.controller";
-import weatherRoutes from "./modules/integrations/weather.controller";
+import authRoutes from "../src/modules/auth/auth.routes.js";
+import usersRoutes from "../src/modules/users/users.routes.js";
+import apptRoutes from "../src/modules/appointments/appointments.routes.js";
+import cepRoutes from "../src/modules/integrations/cep.controller.js";
+import weatherRoutes from "../src/modules/integrations/weather.controller.js";
 
 const app = express();
 
