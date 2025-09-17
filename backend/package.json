@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/app.ts",
-    "build": "tsc -p .",
     "vercel-build": "npm run prisma:gen && npm run build",
+    "build": "tsc -p .",
     "start": "node dist/src/app.js",
     "prisma:gen": "prisma generate",
     "prisma:push": "prisma db push",

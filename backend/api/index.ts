@@ -1,4 +1,51 @@
 import serverless from "serverless-http";
-import app from "../src/app";
+import express from "express";
+import cors from "cors";
+import morgan from "morgan";
 
+// importe suas rotas diretamente
+import authRoutes from "../src/modules/auth/auth.routes";
+import usersRoutes from "../src/modules/users/users.routes";
+import apptRoutes from "../src/modules/appointments/appointments.routes";
+import cepRoutes from "../src/modules/integrations/cep.controller";
+import weatherRoutes from "../src/modules/integrations/weather.controller";
+
+const app = express();
+
+// CORS (ajuste os domínios do seu front)
+const allowedOrigins = [
+  "https://smart-clinic-frontend.vercel.app",
+  "http://localhost:5173",
+];
+app.use(
+  cors({
+    origin(origin, cb) {
+      if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+      return cb(new Error("Not allowed by CORS"));
+    },
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+app.options("*", cors());
+
+// middlewares
+app.use(express.json());
+app.use(morgan("dev"));
+
+// health
+app.get("/health", (_req, res) => res.json({ ok: true }));
+
+// rotas
+app.use("/auth", authRoutes);
+app.use("/users", usersRoutes);
+app.use("/appointments", apptRoutes);
+app.use("/cep", cepRoutes);
+app.use("/weather", weatherRoutes);
+
+// 404 padrão
+app.use((_req, res) => res.status(404).json({ error: "not_found" }));
+
+// exporta handler p/ vercel
 export default serverless(app);
