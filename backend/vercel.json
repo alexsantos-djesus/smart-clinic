@@ -1,7 +1,12 @@
 {
   "version": 2,
   "functions": {
-    "api/**/*.ts": { "runtime": "nodejs20.x" }
+    "api/**/*.ts": {
+      "runtime": "@vercel/node@3",
+      "excludeFiles": "node_modules/.prisma/**"
+    }
   },
-  "routes": [{ "src": "/(.*)", "dest": "/api/index.ts" }]
+  "buildCommand": "npm run prisma:gen && npm run build",
+  "outputDirectory": "dist",
+  "regions": ["iad"]
 }
