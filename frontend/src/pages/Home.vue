@@ -43,7 +43,7 @@
         </div>
 
         <!-- mini trust/stats -->
-        <div class="mt-8 grid grid-cols-3 gap-4">
+        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
           <div class="rounded-2xl border bg-white/70 p-4 backdrop-blur">
             <div class="text-2xl font-semibold">2min</div>
             <div class="text-xs text-gray-500">para seu primeiro agendamento</div>
@@ -55,6 +55,14 @@
           <div class="rounded-2xl border bg-white/70 p-4 backdrop-blur">
             <div class="text-2xl font-semibold">+99%</div>
             <div class="text-xs text-gray-500">de satisfação dos usuários</div>
+          </div>
+        </div>
+
+        <!-- badge reposicionado -->
+        <div class="mt-4 flex justify-center">
+          <div
+            class="inline-block rounded-2xl bg-emerald-600 text-white px-4 py-2 shadow-lg whitespace-nowrap select-none">
+            <span class="font-semibold">Sem fila</span> • confirmação imediata
           </div>
         </div>
       </div>
@@ -101,13 +109,6 @@
                 Confirmar
               </div>
             </div>
-          </div>
-
-          <!-- floating badge -->
-          <div class="absolute left-0 bottom-0 -translate-x-5 translate-y-5 z-10
-             rounded-2xl bg-emerald-600 text-white px-4 py-2 shadow-lg
-             whitespace-nowrap select-none">
-            <span class="font-semibold">Sem fila</span> • confirmação imediata
           </div>
         </div>
       </div>
