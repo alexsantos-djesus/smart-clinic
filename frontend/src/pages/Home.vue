@@ -104,9 +104,7 @@
           </div>
 
           <!-- floating badge -->
-          <div class="absolute left-0 bottom-0 -translate-x-5 translate-y-5 z-10
-             rounded-2xl bg-emerald-600 text-white px-4 py-2 shadow-lg
-             whitespace-nowrap select-none">
+          <div class="absolute -bottom-4 -left-4 rounded-2xl bg-emerald-600 text-white px-4 py-2 shadow-lg">
             <span class="font-semibold">Sem fila</span> • confirmação imediata
           </div>
         </div>
